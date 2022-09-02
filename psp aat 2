@@ -1,0 +1,92 @@
+#include <stdio.h>
+#include<string.h>
+ int i,res;
+ int a[5] = { 0, 0, 1, 1 };
+ int b[5] = { 0, 1, 0, 1 };
+
+int main() {
+    char gate[10];
+    void notf(),andf(),orf(),nandf(),norf();
+    int t,u=0; 
+    printf("Enter the logic gate to be implemented(in lower case only).");
+    scanf("%s",gate);
+
+    t=strcmp(gate,"not");
+   if(t==0)
+   {u++;
+       notf();
+   }
+    t= strcmp(gate,"and");
+   if(t==0)
+   {u++;
+       andf();
+   }
+    t=strcmp(gate,"or");
+   if(t==0)
+   { u++;
+       orf();
+   }
+    t=strcmp(gate,"nand");
+   if(t==0)
+   {u++;
+       nandf();
+   }
+   t=strcmp(gate,"nor");
+   if(t==0)
+   { u++;
+       norf();
+   }
+   if(u==0)
+   {
+       printf("\nWrong input.Re-enter valid input.");
+   }
+}
+
+void notf()
+    {printf("\nNOT GATE:");
+         for (i = 0; i < 2; i++) 
+        {
+        res = !(b[i]);
+        printf("\n NOT %d = %d", b[i], res);
+        }
+        return ;
+    }
+
+void andf()    
+    {printf("\nAND GATE:");
+         for (i = 0; i < 4; i++) 
+       {
+        res= a[i] * b[i];
+        printf("\n %d AND %d = %d",a[i], b[i],res);
+       }return ;
+    }
+
+void orf()    
+    {printf("\nOR GATE:");
+         for (i = 0; i < 4; i++) 
+        {
+        res = a[i] || b[i];
+        printf("\n %d OR %d = %d",a[i], b[i], res);
+        }return ;
+    }
+
+void nandf()    
+    {printf("\nNAND GATE:");
+          for (i = 0; i < 4; i++) 
+        {
+        if (a[i] == 1 && b[i] == 1)
+            res = 0;
+        else
+            res = 1;
+        printf("\n %d NAND %d = %d",a[i], b[i], res);
+        }return ;
+    }
+
+void norf()
+    {printf("\nNOR GATE:");
+          for (i = 0; i < 4; i++) 
+        {
+        res = !(a[i] + b[i]);
+        printf("\n %d NOR %d = %d",a[i], b[i], res);
+        }return ;
+    }
